@@ -2,7 +2,7 @@
 
 //ini CLASS
 class Users {
-    //ini encapsulsi
+    //ini enkapsilasi
     protected String username;
     protected String email;
     protected String password;
@@ -48,7 +48,7 @@ public class App {
         String username = "saya";
         String email = "saya@gmail.com";
         String password = "saya123";
-
+        //penggunaan polimorphism
         Users user = new Adminstrator();
         user.register(username, email, password);
         user.notifikasi();
