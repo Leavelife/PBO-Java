@@ -1,3 +1,4 @@
+
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -17,5 +18,5 @@ public class App {
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+        }
 }
