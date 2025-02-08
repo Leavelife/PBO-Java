@@ -1,8 +1,19 @@
 import java.io.*;
 
 public class App {
-    public static int read() {
-        int number = 52;
+    public static String read() {
+        String text = "";
+        InputStreamReader input = new InputStreamReader(System.in);
+        BufferedReader buf = new BufferedReader(input);
+        try {
+            text = buf.readLine();
+        } catch (IOException e) {
+            System.out.println("error!");
+        }
+        return text;
+    }
+    public static int readInt() {
+        int number = 0;
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader buf = new BufferedReader(input);
         try {
@@ -13,39 +24,35 @@ public class App {
         }
         return number;
     }
-    public static String segitigaSamaSisi(int input) {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 1; i <= input; i++) {
-            for (int j = 1; j <= i; j++) {
-                result.append(" ");
-            }
-            for (int j = i; j <= input; j++) {
-                result.append("* ");
-            }
-            result.append("\n");
-        }
-        return result.toString();
-    }
-    public static String segitigaSikuSiku(int input) {
-        StringBuilder result = new StringBuilder();
-
-        for (int i = 1; i <= input; i++) {
-            for (int j = 1; j <= i; j++) {
-                result.append("*  ");
-            }
-            result.append("\n");
-        }
-        return result.toString();
-    }
     public static void main(String[] args) throws Exception {
-        int input;
-        System.out.println("Input bilangan: ");
-        input = read();
-
-        System.out.println("\nSegitiga sama sisi, sisi = " + input);
-        System.out.println(segitigaSamaSisi(input));
-        System.out.println("\nSegitiga siku-siku dengan alas = " + input);
-        System.out.println(segitigaSikuSiku(input));
+        String input;
+        int pilihan, jumlah = 0;
+        do {
+            System.out.println("\nPROGRAM ABSENSI");
+            System.out.println("1. Presensi Nama");
+            System.out.println("2. Jumlah Presensi");
+            System.out.println("3. exit");
+            System.out.println("Pilih Menu: ");
+            pilihan = readInt();
+            switch (pilihan) {
+                case 1:
+                System.out.println("\nMasukkan nama: ");
+                    input = read();
+                    System.out.println(input + " berhasil present!");
+                    jumlah++;
+                    break;
+                case 2:
+                    System.out.println("\nJumlah kehadiran: " + jumlah);
+                    break;
+                default: {
+                    System.out.println("\nexit program");
+                    break;
+                }
+            }
+            if (pilihan > 4) {
+                System.out.println("invalid input");
+                break;
+            }
+        } while (pilihan != 3);
     }
 }
