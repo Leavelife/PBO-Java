@@ -1,53 +1,49 @@
-class Person {
-    protected String name;
-    protected int age;
+class Truck {
+    int cadence, gear, speed;
+    //class truck memiliki 1 constructor
+    Truck(int startCadence, int startGear, int startSpeed) {
+        cadence = startCadence;
+        gear =  startGear;
+        speed = startSpeed;
+    }
+    //class truck memiliki 4 method
+    public void setCadence(int newValue) {
+        cadence = newValue;
+    }
+    public void setGear(int newValue) {
+        gear = newValue;
+    }
+    public void applyBrake(int decrement) {
+        speed -= decrement;     //speed = speed - decrement
+    }
+    public void speedUp(int increment) {
+        speed += increment;     //speed = speed + increment
+    }
 
-    //setter method
-    public void setInput(String noKaryawa, String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-    //getter method
-    public String getName() {
-        return name;
-    }
-    //getter method
-    public int getAge() {
-        return age;
-    }
-    public void info() {
-        System.out.println("Nama: " + getName());
-        System.out.println("Usia: " + getAge());
-    }
 }
-//ini class inheritence
-class Employ extends Person {
-    private String noKaryawan;
-
-    @Override 
-    //agar method bisa digunakan oleh objek bertipe data class utama
-    public void setInput(String noKaryawan, String name, int age) {
-        super.setInput(noKaryawan, name, age);
-        this.noKaryawan = noKaryawan;
+class MountainTruck extends Truck{
+    int setHeight;
+    MountainTruck(int startHeight, int startCadence, int startGear, int startSpeed) {
+        super(startCadence, startGear, startSpeed);
+        setHeight = startHeight;
     }
-    public String getNoKaryawan() {
-        return noKaryawan;
-    }
-    public void info() {
-        System.out.println("No Karyawan: " + getNoKaryawan());
-        super.info();
+    public void setHeight(int newValue) {
+        setHeight = newValue;
     }
 }
 
-public class App {
-    public static void main(String[] args) throws Exception {
-        Employ karyawan = new Employ();
-        karyawan.setInput("101", "sayaa", 20);
-        karyawan.info();
-
-        System.out.println("\n");
-        Person karyawan2 = karyawan;    //objek menggunakan polimorphism    
-        karyawan2.setInput("102", "dia", 30);
-        karyawan2.info();
+public class App{
+    public static void main(String[] args) {
+        System.out.println("Mulai berjalan");
+        MountainTruck mb = new MountainTruck(0, 0, 0, 0);
+        System.out.println("gear: " + mb.gear);
+        System.out.println("speed: " + mb.speed);
+        mb.setGear(2);
+        mb.speedUp(2);
+        System.out.println("gear: " + mb.gear);
+        System.out.println("speed: " + mb.speed);
+        mb.speedUp(2);
+        System.out.println("gear: " + mb.gear);
+        System.out.println("speed: " + mb.speed);
     }
 }
