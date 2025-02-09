@@ -1,43 +1,51 @@
-class Users {
-    protected int id = 100;
-    protected String name, email;
+class Lingkaran {
+    //encapsulation
+    protected int jari;
+    protected final double phi = 3.14;
 
-    void addUser(String name, String email) {
-        this.name = name;
-        this.email = email;
-        id++;
+    Lingkaran(int jari) {
+        this.jari = jari;
+    }
+    double luasLingkaran() {
+        return jari * jari * phi;
+    }
+    double kelilingLingkaran() {
+        return 2 * jari * phi;
+    }
+    public void info() {
+        System.out.println("Lingkaran\nJari-jari Lingkaran: " + this.jari);
+        System.out.println("Phi Lingkaran: " + this.phi);
+        System.out.println("Luas Lingkaran: " + luasLingkaran());
+        System.out.println("Keliling Lingkaran: " + kelilingLingkaran());
     }
 }
-class Mahasiswa extends Users {
-    private int nim;
-    
-    void addMahasiswa(String name, String email) {
-        super.addUser(name, email);
-        nim = id;
-        System.out.println("NIM: " + nim + "\tNama: " + name + "\tEmail: " + email);
-    }
-}
-class Dosen extends Users {
-    private int nidn;
-    
-    void addDosen(String name, String email) {
-        super.addUser(name, email);
-        nidn = id;
-        System.out.println("NIDN: " + nidn + "\tNama: " + name + "\tEmail: " + email);
-    }
-}
+//inheritence
+class Tabung extends Lingkaran {
+    private int tinggi;
 
+    Tabung(int jari, int tinggi) {
+        super(jari);
+        this.tinggi = tinggi;
+    }
+    double luasTabung() {
+        return 2 * phi * jari * (jari + tinggi);
+    }
+    double volumTabung() {
+        return phi * jari * jari * tinggi;
+    }
+    public void info() {
+        super.info();
+        System.out.println("\nTabung\nVolume Tabung: " + volumTabung());
+        System.out.println("Luas Tabung: " + luasTabung());
+    }
+}
 public class App {
     public static void main(String[] args) throws Exception {
-        Mahasiswa user = new Mahasiswa();
-        Dosen dosen = new Dosen();
-        //contoh
-        System.out.println("Data Mahasiswa: ");
-        user.addMahasiswa("saya", "saya@gmail.com");
-        user.addMahasiswa("diaa", "diaa@gmail.com");
-        user.addMahasiswa("kau", "kau@gmail.com");
-        System.out.println("\nData Dosen: ");
-        dosen.addDosen("adam", "adam@gmail.com");
-        dosen.addDosen("bagas", "bagas@gmail.com");
+        int jari = 8, tinggi = 3;
+        //polymorphism
+        Lingkaran bangunan = new Tabung(jari, tinggi);
+
+        System.out.println("\n");
+        bangunan.info();
     }
 }
